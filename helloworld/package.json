@@ -1,0 +1,12 @@
+{
+    "schema": 1,
+    "name": "name for your package",
+    "id": "",
+    "networked": false,
+    "version": "0.0.1",
+    "permissions": {
+        "interface": false,
+        "networking": true,
+        "scene": true
+    }
+}
