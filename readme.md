@@ -22,5 +22,8 @@ A standard zip archive with the following structure, bold indicates required fil
 
 `version` defines a version for your app 
 
+## Permissions
+You can toggle access to objects under the teverse namespace
+
 # scripts
 When your app is loaded, Teverse will search for a main.lua file and run it automatically if found. This is the main entry point to your app.
