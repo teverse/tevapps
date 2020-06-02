@@ -1,7 +1,6 @@
 {
     "schema": 1,
     "name": "hello-world",
-    "id": "",
     "networked": false,
     "version": "0.0.1",
     "permissions": {
