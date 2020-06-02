@@ -4,8 +4,6 @@
     "networked": false,
     "version": "0.0.1",
     "permissions": {
-        "interface": false,
-        "networking": true,
-        "scene": true
+        "construct": true
     }
 }
