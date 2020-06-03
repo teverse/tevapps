@@ -2,7 +2,8 @@
   "name": "tevapps",
   "version": "1.0.0",
   "scripts": {
-    "build-all": "cd ./src && ../node_modules/.bin/foreach -g \"./*\" -x \"cd ./#{name} && zip ../../dist/#{name}.tevapp * -r\""
+    "build-all": "cd ./src && ../node_modules/.bin/foreach -g \"./*\" -x \"cd ./#{name} && zip ../../dist/#{name}.tevapp * -r\"",
+    "run-hello-world": "./node_modules/.bin/open-cli ./dist/hello-world.tevapp"
   },
   "repository": {
     "type": "git",
@@ -12,7 +13,8 @@
   "homepage": "https://github.com/teverse/tevapps#readme",
   "dependencies": {
     "foreach-cli": "^1.8.1",
-    "glob-run": "^0.1.7"
+    "glob-run": "^0.1.7",
+    "open-cli": "^6.0.1"
   },
   "console": "integratedTerminal"
 }
