@@ -1,0 +1,18 @@
+{
+  "name": "tevapps",
+  "version": "1.0.0",
+  "scripts": {
+    "build-all": "cd ./src && ../node_modules/.bin/foreach -g \"./*\" -x \"cd ./#{name} && zip ../../dist/#{name}.tevapp * -r\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teverse/tevapps.git"
+  },
+  "author": "Teverse.com",
+  "homepage": "https://github.com/teverse/tevapps#readme",
+  "dependencies": {
+    "foreach-cli": "^1.8.1",
+    "glob-run": "^0.1.7"
+  },
+  "console": "integratedTerminal"
+}
