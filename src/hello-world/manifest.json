@@ -4,6 +4,8 @@
     "networked": false,
     "version": "0.0.1",
     "permissions": {
-        "construct": true
+        "client": {
+            "construct": true
+        }
     }
 }
