@@ -1,0 +1,11 @@
+{
+    "schema": 1,
+    "id": "script-editor",
+    "networked": false,
+    "version": "0.0.1",
+    "permissions": {
+        "client": {
+            "construct": true
+        }
+    }
+}
