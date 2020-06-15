@@ -16,5 +16,13 @@ local run = teverse.construct("guiTextBox", {
 })
 
 run:on("mouseLeftUp", function ()
-    pcall(loadstring(editor.text))
+    local f, r = loadstring(editor.text)
+    if f then
+        local success, result = pcall(f)
+        if not success then 
+            print("Protected call failed: ", result)
+        end
+    else
+        print("Did not load string", r)
+    end
 end)
