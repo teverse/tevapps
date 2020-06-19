@@ -1,0 +1,13 @@
+{
+    "schema": 1,
+    "id": "physics",
+    "networked": false,
+    "version": "0.0.1",
+    "permissions": {
+        "client": {
+            "construct": true,
+            "scene": true,
+            "input": true
+        }
+    }
+}
