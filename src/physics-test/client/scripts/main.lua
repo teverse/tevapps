@@ -1,4 +1,6 @@
 teverse.scene.simulate = true
+teverse.scene.camera.position = vector3(0, 1, -10)
+teverse.scene.camera.rotation = quaternion.euler(math.rad(25), 0, 0)
 
 local light = teverse.construct("directionalLight", {
     rotation = quaternion.euler(math.rad(-45), math.rad(20), 0),
@@ -8,9 +10,16 @@ local light = teverse.construct("directionalLight", {
 local base = teverse.construct("block", {
     position = vector3(0, -10, 0),
     scale = vector3(30, 1, 30),
-    colour = colour(1, 1, 1)
+    colour = colour(1, 1, 1),
+    linearFactor = vector3(0, 0, 0),
+    angularFactor = vector3(0, 1, 0),
+    static = false
 })
-
+spawn(function()
+    while sleep(1) do
+        base:applyTorqueImpulse(vector3(0, 1000, 0))
+    end
+end)
 local offset = false
 for y = -9, -4, 0.5 do
     local xo = 0
@@ -59,8 +68,6 @@ teverse.input:on("mouseLeftDown", function()
     block:applyImpulse((teverse.scene.camera.position - teverse.scene.camera:screenToWorld(teverse.input.mousePosition)) * -1000)
 end)
 
-teverse.scene.camera.position = vector3(0, 1, -10)
-teverse.scene.camera.rotation = quaternion.euler(math.rad(25), 0, 0)
 
 local gui = teverse.construct("guiTextBox", {
     parent = teverse.interface,
@@ -118,9 +125,10 @@ teverse.input:on("keyUp", function(key)
                     rotation=quaternion.euler(0, math.rad(90), 0)
                 }, "inOutQuad")
             end
-            sleep(.6)
+            sleep()
         end
         sleep(0.5)
+        base.angularVelocity = vector3(0, 0, 0)
         for _,v in pairs(bricks) do
             v.static = false
             v.colour = v.colour * 2
