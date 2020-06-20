@@ -7,7 +7,8 @@
         "client": {
             "construct": true,
             "scene": true,
-            "input": true
+            "input": true,
+            "tween": true
         }
     }
 }
