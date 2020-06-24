@@ -1,0 +1,14 @@
+{
+    "schema": 1,
+    "id": "networked",
+    "networked": true,
+    "version": "0.0.1",
+    "permissions": {
+        "client": {
+            "construct": true
+        },
+        "server": {
+            "construct": true
+        }
+    }
+}
