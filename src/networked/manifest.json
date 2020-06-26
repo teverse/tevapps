@@ -5,10 +5,10 @@
     "version": "0.0.1",
     "permissions": {
         "client": {
-            "construct": true
+            "networking": true
         },
         "server": {
-            "construct": true
+            "networking": true
         }
     }
 }
