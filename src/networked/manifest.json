@@ -5,7 +5,9 @@
     "version": "0.0.1",
     "permissions": {
         "client": {
-            "networking": true
+            "networking": true,
+            "interface": true,
+            "construct": true
         },
         "server": {
             "networking": true

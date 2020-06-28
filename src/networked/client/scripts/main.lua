@@ -1,6 +1,17 @@
-print("client main.lua")
+local uiController = require("scripts/uiController.lua")
+uiController.createInterface()
 
-teverse.networking:on("customMessage", function(data1, data2)
-    print("MSG from server:", data1, data2)
-    teverse.networking:sendToServer("customMessage", "Hi from a client")
+local function onChat(sender, message)
+    print("onchat", sender, message)
+    uiController.addMessage(sender, "image", message)
+end
+
+teverse.networking:on("chat", onChat)
+
+teverse.networking:on("_clientConnected", function(client)
+    uiController.addClient(client.name)
+end)
+
+teverse.networking:on("_clientDisconnected", function(client)
+    uiController.removeClient(client.name)
 end)
