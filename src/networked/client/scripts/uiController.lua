@@ -55,7 +55,6 @@ uiController.createInterface = function ()
         size = guiCoord(1, -20, 1, -122),
         position = guiCoord(0, 10, 0, 52),
         backgroundAlpha = 0,
-        strokeAlpha = 0.5,
         clip = true
     })
 
@@ -145,8 +144,8 @@ uiController.addMessage = function(user, image, text)
 
     teverse.construct("guiTextBox", {
         parent = message,
-        size = guiCoord(1, -60, 0, 18),
-        position = guiCoord(0, 50, 0, 5),
+        size = guiCoord(1, -60, 0, 22),
+        position = guiCoord(0, 50, 0, 2),
         text = user,
         textSize = 18,
         textFont = "tevurl:fonts/openSansBold.ttf",
@@ -162,12 +161,14 @@ uiController.addMessage = function(user, image, text)
         textColour = colour(0, 0, 0)
     })
 
+    print(image)
     teverse.construct("guiImage", {
         parent = message,
         size = guiCoord(0, 40, 0, 40),
         position = guiCoord(0, 5, 0, 5),
         backgroundColour = colour(0.97, 0.97, 0.97),
-        strokeRadius = 5
+        strokeRadius = 5,
+        image = image
     })
 
     local height = math.max(50, txt.textDimensions.y + 24)
