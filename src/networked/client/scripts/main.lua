@@ -1,3 +1,4 @@
+print("client loaded")
 local uiController = require("scripts/uiController.lua")
 uiController.createInterface()
 
@@ -15,3 +16,9 @@ end)
 teverse.networking:on("_clientDisconnected", function(client)
     uiController.removeClient(client.name)
 end)
+
+-- Keep showing the loading UI until we're connected
+while not teverse.networking.isConnected do
+    sleep(0.5)
+end
+uiController.loading:destroy()

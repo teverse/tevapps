@@ -2,26 +2,6 @@ local uiController = {}
 
 uiController.createInterface = function ()
 
-    local connectingInterface = teverse.construct("guiFrame", {
-        parent = teverse.interface,
-        zIndex = 10,
-        size = guiCoord(1, 0, 1, 0),
-        backgroundColour = colour(0, 0, 0),
-        backgroundAlpha = 0.8
-    })
-
-    teverse.construct("guiTextBox", {
-        parent = connectingInterface,
-        size = guiCoord(0.5, 0, 0.5, 0),
-        position = guiCoord(0.25, 0, 0.25, 0),
-        text = "Waiting for a connection",
-        textAlign = "middle",
-        textSize = 24,
-        textColour = colour(1, 1, 1),
-        textShadowSize = 2,
-        backgroundAlpha = 0
-    })
-
     -- Create right sidebar:
     uiController.playerList = teverse.construct("guiFrame", {
         parent = teverse.interface,
@@ -36,6 +16,28 @@ uiController.createInterface = function ()
         size = guiCoord(1, -250, 1, 0),
         position = guiCoord(0, 0, 0, 0),
         backgroundColour = colour(1, 1, 1)
+    })
+
+    uiController.loading = teverse.construct("guiFrame", {
+        parent = main,
+        zIndex = 10,
+        size = guiCoord(1, 0, 1, 0),
+        backgroundColour = colour(0, 0, 0),
+        backgroundAlpha = 0.8,
+        zIndex = 10,
+        name = "connectingInterface"
+    })
+
+    teverse.construct("guiTextBox", {
+        parent = uiController.loading,
+        size = guiCoord(0.5, 0, 0.5, 0),
+        position = guiCoord(0.25, 0, 0.25, 0),
+        text = "Waiting for a connection to the app",
+        textAlign = "middle",
+        textSize = 24,
+        textColour = colour(1, 1, 1),
+        textShadowSize = 2,
+        backgroundAlpha = 0
     })
 
     -- Main Title
@@ -124,11 +126,6 @@ uiController.createInterface = function ()
             send()
         end
     end)
-    
-    while not teverse.networking.isConnected do
-        sleep(0.5)
-    end
-    connectingInterface:destroy()
 end
 
 local counter = 0
@@ -198,7 +195,8 @@ uiController.addClient = function(clientName)
         textSize = 18,
         text = clientName,
         position = guiCoord(0, 10, 0, 0),
-        name = clientName
+        name = clientName,
+        backgroundAlpha = 0
     })
 end
 
@@ -209,7 +207,7 @@ uiController.removeClient = function(clientName)
     end
     
     for i,v in pairs(uiController.playerList.children) do
-        v.position = guiCoord(0, 0, 0, (i-1)*22)
+        v.position = guiCoord(0, 0, 0, i*22)
     end
 end
 
