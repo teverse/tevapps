@@ -31,3 +31,24 @@ while not teverse.networking.isConnected do
     sleep(0.5)
 end
 uiController.loading:destroy()
+
+local dbg = teverse.construct("guiTextBox", {
+    parent = teverse.interface,
+    size = guiCoord(0, 200, 0, 250),
+    position = guiCoord(1, -210, 1, -260),
+    backgroundAlpha = 0,
+    textSize = 12,
+    textColour = colour(1, 0, 0),
+    textWrap = true,
+    textFont = "tevurl:fonts/firaCodeRegular.otf",
+    textAlign = "topLeft"
+})
+
+while sleep(0.7) do
+    local stats = teverse.networking:getStats()
+    dbg.text = "Packet loss (1s): " .. tonumber(stats.packetlossLastSecond) .. "\n"
+        .. "Packet loss (total):" .. tonumber(stats.packetlossTotal) .. "\n"
+        .. "Processed (total):" .. tonumber(stats.totalMessageBytesReceivedProcessed) .. "\n"
+        .. "Ignored (total):" .. tonumber(stats.totalMessageBytesReceivedIgnored) .. "\n"
+        .. "Send buffer:" .. tonumber(stats.bytesInSendBuffer) .. "\n"
+end

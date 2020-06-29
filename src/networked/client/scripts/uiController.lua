@@ -161,7 +161,6 @@ uiController.addMessage = function(user, image, text)
         textColour = colour(0, 0, 0)
     })
 
-    print(image)
     teverse.construct("guiImage", {
         parent = message,
         size = guiCoord(0, 40, 0, 40),
