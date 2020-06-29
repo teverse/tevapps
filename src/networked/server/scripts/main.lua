@@ -1,4 +1,4 @@
-print("server main.lua!!")
+print("Hello Server!")
 
 teverse.networking:on("chat", function(client, message)
     -- Never 'trust' input from a user, we'll perform some simple validation here:
