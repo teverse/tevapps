@@ -50,7 +50,7 @@ uiController.createInterface = function ()
         textColour = colour(0, 0, 0)
     })
 
-    uiController.scrollview = teverse.construct("guiFrame", {
+    uiController.scrollview = teverse.construct("guiScrollView", {
         parent = main,
         size = guiCoord(1, -20, 1, -122),
         position = guiCoord(0, 10, 0, 52),
@@ -127,20 +127,28 @@ uiController.createInterface = function ()
     end)
 end
 
-local counter = 0
+local currentY = 10
 uiController.addMessage = function(user, image, text)
+    local children = uiController.scrollview.children
+    if #children >= 15 then
+        local toKill = uiController.scrollview.children[1]
+        local sizeY = toKill.absoluteSize.y
+        for _,v in pairs(children) do
+            v.position = v.position - guiCoord(0, 0, 0, sizeY + 10)
+        end
+        currentY = currentY - sizeY - 10
+        toKill:destroy()
+    end
+
     local message = teverse.construct("guiFrame", {
         parent = uiController.scrollview,
-        size = guiCoord(1, -20, 0, 50),
-        position = guiCoord(0, 10, 1, -60),
+        size = guiCoord(1, -20, 0, 0),
+        position = guiCoord(0, 10, 0, currentY),
         strokeAlpha = 0.2,
         strokeRadius = 5,
         dropShadowAlpha = 0.1,
         dropShadowColour = colour(1, 0, 0),
-        name = string.format("%03d", counter)
     })
-
-    counter = counter + 1
 
     teverse.construct("guiTextBox", {
         parent = message,
@@ -171,17 +179,10 @@ uiController.addMessage = function(user, image, text)
     })
 
     local height = math.max(50, txt.textDimensions.y + 24)
-    local count = #uiController.scrollview.children
-    for i, v in pairs(uiController.scrollview.children) do
-        v.position = v.position - guiCoord(0, 0, 0, height + 10)
-
-        if i == 1 and count > 10 then
-            v:destroy()
-        end
-    end
-    
     message.size = guiCoord(1, -20, 0, height)
-    message.position = guiCoord(0, 10, 1, -(height + 10))
+    currentY = currentY + height + 10
+    uiController.scrollview.canvasOffset = vector2(0, currentY - uiController.scrollview.absoluteSize.y)
+    uiController.scrollview.canvasSize = guiCoord(1, 0, 0, currentY)
 end
 
 uiController.addClient = function(clientName)
