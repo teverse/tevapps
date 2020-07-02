@@ -128,7 +128,7 @@ uiController.createInterface = function ()
 end
 
 local currentY = 10
-uiController.addMessage = function(user, image, text)
+uiController.addMessage = function(user, image, text, mentioned)
     local children = uiController.scrollview.children
     if #children >= 15 then
         local toKill = uiController.scrollview.children[1]
@@ -148,6 +148,7 @@ uiController.addMessage = function(user, image, text)
         strokeRadius = 5,
         dropShadowAlpha = 0.1,
         dropShadowColour = colour(1, 0, 0),
+        backgroundColour = colour(1, 165/255, 0)
     })
 
     teverse.construct("guiTextBox", {
@@ -157,7 +158,8 @@ uiController.addMessage = function(user, image, text)
         text = user,
         textSize = 18,
         textFont = "tevurl:fonts/openSansBold.ttf",
-        textColour = colour(0, 0, 0)
+        textColour = colour(0, 0, 0),
+        backgroundAlpha = 0;
     })
 
     local txt = teverse.construct("guiTextBox", {
@@ -167,6 +169,7 @@ uiController.addMessage = function(user, image, text)
         text = text,
         textSize = 16,
         textColour = colour(0, 0, 0)
+        backgroundAlpha = 0;
     })
 
     teverse.construct("guiImage", {
@@ -174,6 +177,7 @@ uiController.addMessage = function(user, image, text)
         size = guiCoord(0, 40, 0, 40),
         position = guiCoord(0, 5, 0, 5),
         backgroundColour = colour(0.97, 0.97, 0.97),
+        backgroundAlpha = 0,
         strokeRadius = 5,
         image = image
     })
