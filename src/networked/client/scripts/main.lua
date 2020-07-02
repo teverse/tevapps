@@ -3,9 +3,12 @@ print("Hello Client!")
 local uiController = require("scripts/uiController.lua")
 uiController.createInterface()
 
-local function onChat(sender, message)
+local function onChat(sender, message, mentions)
+    mentions = mentions or {}
+    local mentioned = mentions[teverse.localClient] == true
+    
     local client = teverse.networking:getClient(sender)
-    uiController.addMessage(client and client.name or sender, client ~= nil and ("https://cdn.teverse.com/user/" .. client.id) or "tevurl:img/info.png", message)
+    uiController.addMessage(client and client.name or sender, client ~= nil and ("https://cdn.teverse.com/user/" .. client.id) or "tevurl:img/info.png", message, mentioned)
 end
 
 teverse.networking:on("chat", onChat)
