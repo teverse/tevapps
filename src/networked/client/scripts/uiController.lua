@@ -186,10 +186,6 @@ uiController.addMessage = function(user, image, text)
 end
 
 uiController.addClient = function(clientName)
-    for _,v in pairs(uiController.playerList.children) do
-        v.position = v.position + guiCoord(0, 0, 0, 22)
-    end
-
     local clientBtn = teverse.construct("guiTextBox", {
         parent = uiController.playerList,
         size = guiCoord(1, -20, 0, 22),
@@ -199,6 +195,10 @@ uiController.addClient = function(clientName)
         name = clientName,
         backgroundAlpha = 0
     })
+    
+    for i,v in pairs(uiController.playerList.children) do
+        v.position = guiCoord(0, 0, 0, i * 22)
+    end
 end
 
 uiController.removeClient = function(clientName)
