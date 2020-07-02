@@ -30,9 +30,9 @@ teverse.networking:on("chat", function(client, message)
 end)
 
 teverse.networking:on("_clientConnected", function(client)
-    teverse.networking:broadcast("chat", "Server", client.name .. " joined the chat")
+    teverse.networking:broadcast("chat", "Server", client.name .. " joined the chat", {})
 end)
 
 teverse.networking:on("_clientDisconnected", function(client)
-    teverse.networking:broadcast("chat", "Server", client.name .. " left the chat")
+    teverse.networking:broadcast("chat", "Server", client.name .. " left the chat", {})
 end)
