@@ -1,6 +1,6 @@
 {
     "schema": 1,
-    "id": "networked",
+    "id": "networked-3d",
     "networked": true,
     "version": "0.0.1",
     "permissions": {
@@ -8,10 +8,10 @@
             "networking": true,
             "interface": true,
             "construct": true,
-            "tween": true
         },
         "server": {
-            "networking": true
+            "networking": true,
+            "construct": true
         }
     }
 }
