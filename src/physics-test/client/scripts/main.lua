@@ -146,7 +146,7 @@ teverse.input:on("mouseLeftDown", function()
         mesh = "tevurl:3d/sphere2.glb",
         static = false
     })
-    block:applyImpulse((teverse.scene.camera.position - teverse.scene.camera:screenToWorld(teverse.input.mousePosition)) * -1000)
+    block:applyImpulse(teverse.scene.camera:screenToWorld(teverse.input.mousePosition) * 1000)
 end)
 
 reset:on("mouseLeftDown", function ()
