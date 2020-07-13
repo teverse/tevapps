@@ -8,7 +8,8 @@
             "networking": true,
             "interface": true,
             "construct": true,
-            "tween": true
+            "tween": true,
+            "input": true
         },
         "server": {
             "networking": true,
