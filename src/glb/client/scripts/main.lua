@@ -1,4 +1,4 @@
-teverse.scene.camera.position = vector3(6.65, 3.33, 2.90)
+teverse.scene.camera.position = vector3(0, 2, 3)
 teverse.scene.camera:lookAt(vector3(0, 0, 0))
 
 local light = teverse.construct("directionalLight", {
@@ -7,13 +7,14 @@ local light = teverse.construct("directionalLight", {
 })
 
 local block = teverse.construct("block", {
-    position = vector3(4, 0, 0),
+    position = vector3(0, 0, 0),
     scale = vector3(1,1,1),
     colour = colour(1, 1, 1),
     mesh = "fs:meshes/ybotdance2.glb",
     rotation = quaternion.euler(0, math.rad(90), 0),
     scale = vector3(1, 1, 1) 
 })
+
 local camera = require("tevgit:core/3d/camera.lua") -- 3D Camera for 3D Environment
-block.scale = block.meshScale * 0.2
+block.scale = block.meshScale
 print(block.scale)
