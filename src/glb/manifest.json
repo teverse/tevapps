@@ -6,7 +6,8 @@
     "permissions": {
         "client": {
             "construct": true,
-            "input": true
+            "input": true,
+            "tween": true
         }
     }
 }
