@@ -1,0 +1,12 @@
+{
+    "schema": 1,
+    "id": "glb",
+    "networked": false,
+    "version": "0.0.1",
+    "permissions": {
+        "client": {
+            "construct": true,
+            "input": true
+        }
+    }
+}
