@@ -1,0 +1,14 @@
+{
+    "schema": 1,
+    "id": "gui-designer",
+    "networked": false,
+    "version": "0.0.1",
+    "permissions": {
+        "client": {
+            "construct": true,
+            "interface": true,
+            "tween": true,
+            "input": true
+        }
+    }
+}
