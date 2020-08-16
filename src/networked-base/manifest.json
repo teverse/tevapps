@@ -1,0 +1,19 @@
+{
+    "schema": 1,
+    "id": "networked-base",
+    "networked": true,
+    "version": "0.0.1",
+    "permissions": {
+        "client": {
+            "networking": true,
+            "interface": true,
+            "construct": true,
+            "tween": true,
+            "input": true
+        },
+        "server": {
+            "networking": true,
+            "construct": true
+        }
+    }
+}
